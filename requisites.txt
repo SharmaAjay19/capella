@@ -1,0 +1,16 @@
+1. INSTALL AVPLAY OR FFMPEG
+
+sudo apt-get install libav-tools
+
+OR
+
+sudo add-apt-repository ppa:jon-severinsson/ffmpeg
+sudo apt-get update
+sudo apt-get install ffmpeg
+
+2. INSTALL PYDUB
+sudo apt-get install pydub
+
+3. Install Flask
+pip install flask
+

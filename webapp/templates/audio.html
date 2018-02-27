@@ -1,0 +1,15 @@
+<script type="text/javascript">
+function myFunction() {
+    var x = document.createElement("AUDIO");
+
+    if (x.canPlayType("audio/mpeg")) {
+        x.setAttribute("src","{{filepath}}");
+    } else {
+        x.setAttribute("src","{{filepath}}");
+    }
+
+    x.setAttribute("controls", "controls");
+    document.body.appendChild(x);
+}
+</script>
+<button onclick="myFunction();">Play</button>
