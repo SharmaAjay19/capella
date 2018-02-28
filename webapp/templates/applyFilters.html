@@ -1,0 +1,72 @@
+<!--<style>
+video {
+  width: 307px;
+  height: 250px;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid #ccc;
+}
+.grayscale {
+  +filter: grayscale(100);
+}
+.sepia {
+  +filter: sepia(100);
+}
+.blur {
+  +filter: blur(3px);
+}
+.brightness {
+  +filter: brightness();
+}
+</style>-->
+
+<video autoplay id='videoFrame'></video>
+
+<script>
+var errorCallback = function(e) {
+    console.log('Reeeejected!', e);
+  };
+navigator.getUserMedia  = navigator.getUserMedia ||
+                          navigator.webkitGetUserMedia ||
+                          navigator.mozGetUserMedia ||
+                          navigator.msGetUserMedia;
+var idx = 0;
+/*var filters = ['grayscale', 'sepia', 'blur', 'brightness',
+               'contrast', 'hue-rotate', 'hue-rotate2',
+               'hue-rotate3', 'saturate', 'invert', ''];*/
+var filters = ['grayscale', 'sepia', 'blur', 'brightness'];
+
+var filterDict = {
+  'grayscale' : 'grayscale(100)',
+  'sepia' : 'sepia(100)',
+  'blur' : 'blur(3px)',
+  'brightness' : 'brightness(20)'
+};
+function changeFilter(e) {
+  var el = e.target;
+  el.className = '';
+  var effect = filters[idx++ % filters.length]; // loop through filters.
+  if (effect) {
+    document.getElementById("videoFrame").style.filter = filterDict[effect];
+    //el.classList.add(effect);
+  }
+}
+var video = document.querySelector('video');
+if (navigator.getUserMedia){
+    navigator.getUserMedia(
+      {video: true, audio: false},
+      function(localMediaStream) {
+        video.src = window.URL.createObjectURL(localMediaStream);
+        video.addEventListener(
+    'click', changeFilter, false);
+        // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
+        // See crbug.com/110938.
+        video.onloadedmetadata = function(e) {
+            // Ready to go. Do some stuff.
+        };
+      },
+      errorCallback);
+  }
+  else{
+    alert("Media Error");
+  }
+</script>
