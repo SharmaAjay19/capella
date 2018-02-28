@@ -1,0 +1,31 @@
+https://stackoverflow.com/questions/4039158/mixing-two-audio-files-together-with-python
+
+from pydub import AudioSegment
+
+sound1 = AudioSegment.from_file("/path/to/my_sound.wav")
+sound2 = AudioSegment.from_file("/path/to/another_sound.wav")
+
+combined = sound1.overlay(sound2)
+
+combined.export("/path/to/combined.wav", format='wav')
+
+mp3 can also be done.
+
+
+FOR FFMPEG OR FFPLAY NOT FOUND ERROR
+https://stackoverflow.com/questions/29454002/filenotfounderror-errno-2-no-such-file-or-directory-ffmpeg
+
+
+FOR HTML Media capturing
+https://www.html5rocks.com/en/tutorials/getusermedia/intro/
+
+FOR STREAMING AND CAPTURING
+https://henri.io/posts/streaming-microphone-input-with-flask.html
+
+
+FLASK UWSGI
+https://github.com/zeekay/flask-uwsgi-websocket
+
+
+HTML CSS FILTERS
+https://www.w3schools.com/jsref/prop_style_filter.asp
